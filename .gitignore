@@ -1,0 +1,8 @@
+.next
+node_modules
+.env
+*.log
+Frontend/.next
+Frontend/node_modules
+Backend/node_modules
+Backend/.env
