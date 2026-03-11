@@ -15,6 +15,7 @@
 - [The Problem](#the-problem)
 - [Our Solution](#our-solution)
 - [Key Features](#key-features)
+- [Interface Screenshots](#interface-screenshots)
 - [System Architecture](#system-architecture)
 - [How It Works](#how-it-works)
 - [Tech Stack](#tech-stack)
@@ -24,6 +25,7 @@
   - [Frontend Setup](#frontend-setup)
 - [Team](#team)
 - [Vision](#vision)
+
 ---
 
 ## The Problem
@@ -65,6 +67,32 @@ Instead of forcing people to adapt to technology,
 - **Text-to-Sign** mapping with a dynamic gesture library.
 - Interactive **web interface** built with Next.js.
 - Real-time **video processing pipeline** with OpenCV and TensorFlow.
+
+---
+
+## Interface Screenshots
+
+Take a look at AURA in action:
+
+<div align="center">
+  <img src="screenshots/sign-to-text.png" alt="Sign to Text Translation" width="400"/>
+  <p><em>Sign to Text – Real-time gesture recognition</em></p>
+</div>
+
+<div align="center">
+  <img src="screenshots/text-to-sign.png" alt="Text to Sign Translation" width="400"/>
+  <p><em>Text to Sign – Typed message converted to sign animations</em></p>
+</div>
+
+<div align="center">
+  <img src="screenshots/audio-to-sign.png" alt="Audio to Sign Translation" width="400"/>
+  <p><em>Audio to Sign – Speech transcribed and mapped to signs</em></p>
+</div>
+
+<div align="center">
+  <img src="screenshots/signbook.png" alt="Signbook Library" width="400"/>
+  <p><em>Signbook – Browse and learn common signs</em></p>
+</div>
 
 ---
 
@@ -217,7 +245,7 @@ sequenceDiagram
 
 ### Ann Maria Jaison
 - Frontend
--  Machine learning
+- Machine learning
 - Backend: Audio-to-Text Module, Sign-to-Text and Text-to-Sign Module
 - Documentation
 ### Ashlin Joy Varghese
