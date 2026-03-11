@@ -108,12 +108,12 @@ flowchart TD
     D --> E[Gesture / Text Prediction]
     E --> F[Visual Output on Frontend]
     
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#bfb,stroke:#333,stroke-width:2px
-    style D fill:#fbb,stroke:#333,stroke-width:2px
-    style E fill:#ff9,stroke:#333,stroke-width:2px
-    style F fill:#9cf,stroke:#333,stroke-width:2px
+    style A fill:black,color:white,stroke:#333,stroke-width:2px
+    style B fill:black,color:white,stroke:#333,stroke-width:2px
+    style C fill:black,color:white,stroke:#333,stroke-width:2px
+    style D fill:black,color:white,stroke:#333,stroke-width:2px
+    style E fill:black,color:white,stroke:#333,stroke-width:2px
+    style F fill:black,color:white,stroke:#333,stroke-width:2px
 ```
 
 ### Data Flow Diagram
