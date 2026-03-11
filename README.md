@@ -227,28 +227,27 @@ We envision a world where no one is left out of a conversation because of a lang
 
 ### Ann Maria Jaison
 - Frontend
-- Backend: Sign-to-Text and Text-to-Sign Module
-- Machine learning
-- Audio-to-Text Module
+-  Machine learning
 - Documentation
+- Backend: Audio-to-Text Module, Sign-to-Text and Text-to-Sign Module
 
 ### Ashlin Joy Varghese
-- Backend Development: Audio-to-Text Module
 - Research
 - Documentation
 - Presentation
+- Backend Development: Audio-to-Text Module
 
 ### Catherine Susan Rajesh
-- Backend Development: Sign-to-Text and Text-to-Sign Module
 - Documentation
 - Presentation
 - Research
+- Backend Development: Sign-to-Text and Text-to-Sign Module
 
 ### Neha Joshy
 - Research
 - Documentation
-- Backend Development: Audio-to-Text Module
 - Presentation
+- Backend Development: Audio-to-Text Module
 
 <p align="center">
   Made with ❤️ by the AURA Team
