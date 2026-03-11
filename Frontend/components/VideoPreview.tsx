@@ -2,13 +2,15 @@
 
 import { forwardRef } from 'react';
 
-const VideoPreview = forwardRef<HTMLVideoElement>((props, ref) => {
+const VideoPreview = forwardRef<HTMLVideoElement, React.VideoHTMLAttributes<HTMLVideoElement>>((props, ref) => {
   return (
     <video
       ref={ref}
       autoPlay
       playsInline
-      className="w-full aspect-video bg-secondary rounded-lg object-cover"
+      muted
+      {...props}
+      className={`w-full aspect-video bg-black rounded-2xl object-cover shadow-2xl ${props.className || ''}`}
     />
   );
 });

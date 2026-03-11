@@ -28,7 +28,7 @@ export default function AudioToSign() {
       const formData = new FormData();
       formData.append('file', audioFile);
 
-      const response = await fetch('http://localhost:8000/transcribe', {
+      const response = await fetch('http://127.0.0.1:8003/transcribe', {
         method: 'POST',
         body: formData,
       });
@@ -38,30 +38,8 @@ export default function AudioToSign() {
       const data = await response.json();
       const transcription = data.text;
       setTranscribedText(transcription);
-
-      // Convert transcribed text to sign description
-      const signDescriptions: { [key: string]: string } = {
-        hello: 'Open hand touching forehead, moving forward',
-        thank: 'Hand near chin, moving outward twice',
-        good: 'Hand moves from mouth downward to other hand palm up',
-        morning: 'One arm represents the sun, other arm moves up',
-        help: 'One hand formed like a fist under the other palm',
-        appreciate: 'Both hands on chest, moving outward in grateful motion',
-        kindness: 'Fingers tap chest over heart repeatedly',
-      };
-
-      let description = 'Sign sequence: ';
-      const words = transcription
-        .toLowerCase()
-        .split(' ')
-        .filter((w: string) => w.length > 2);
-
-      description += words.length > 0
-        ? words.map((word: string) => signDescriptions[word] || `Finger-spell "${word}"`).join(' → ')
-        : 'Could not determine sign sequence.';
-
-      setSignDescription(description);
     } catch (error) {
+
       console.error('Error processing audio:', error);
       alert('Error communicating with backend. Make sure the Python server is running.');
     } finally {
@@ -94,7 +72,7 @@ export default function AudioToSign() {
           className="w-full px-6 py-8 border-2 border-dashed border-border rounded-lg hover:border-accent hover:bg-secondary/30 transition-colors cursor-pointer"
         >
           <div className="text-center">
-            <p className="text-2xl mb-2">🎤</p>
+           
             <p className="font-medium">Click to select audio file</p>
             <p className="text-sm text-muted-foreground mt-1">or drag and drop</p>
           </div>
@@ -143,19 +121,27 @@ export default function AudioToSign() {
             <p className="text-sm text-muted-foreground uppercase tracking-wider font-semibold mb-4">Sign Language Sequence</p>
             <div className="flex flex-wrap gap-4 items-center justify-center">
               {transcribedText.toUpperCase().split('').map((char, index) => {
-                if (char === ' ') return <div key={index} className="w-8" />;
-                const isAlphaNumeric = /^[A-Z0-9]$/.test(char);
+                if (char === ' ') {
+                  return (
+                    <div key={index} className="flex flex-col items-center gap-2">
+                      <div className="w-20 h-20 bg-card rounded-lg border border-border flex items-center justify-center overflow-hidden shadow-sm">
+                        <img src="/signs/space.jpg" alt="space" className="w-full h-full object-cover" />
+                      </div>
+                      <span className="text-xs font-bold text-muted-foreground">SPACE</span>
+                    </div>
+                  );
+                }
+                const isAlpha = /^[A-Z]$/.test(char);
                 return (
                   <div key={index} className="flex flex-col items-center gap-2">
                     <div className="w-20 h-20 bg-card rounded-lg border border-border flex items-center justify-center overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                      {isAlphaNumeric ? (
+                      {isAlpha ? (
                         <img
-                          src={`/signbook/${char}.jpg`}
+                          src={`/signs/${char}.jpg`}
                           alt={`Sign for ${char}`}
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).style.display = 'none';
-                            (e.target as any).parentElement.innerHTML = `<span class="text-2xl font-bold">${char}</span>`;
+                            (e.target as HTMLImageElement).src = 'https://placehold.co/100x100/222/accent?text=' + char;
                           }}
                         />
                       ) : (
@@ -168,6 +154,7 @@ export default function AudioToSign() {
               })}
             </div>
           </div>
+
 
           <div className="bg-accent/10 rounded-lg p-4 border border-accent/20 flex gap-3 items-start">
             <span className="text-xl">💡</span>

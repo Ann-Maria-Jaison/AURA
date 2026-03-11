@@ -8,7 +8,8 @@ import numpy as np
 from PIL import Image
 import io
 
-from predictor import SignPredictor
+# from predictor import SignPredictor (Legacy)
+from yolo_predictor import YoloSignPredictor
 from transcriber import AudioTranscriber
 
 app = FastAPI()
@@ -23,13 +24,14 @@ app.add_middleware(
 )
 
 # Initialize Predictors
-# We'll use absolute paths or relative to the root where scripts are
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-predictor = SignPredictor(
-    model_path=os.path.join(ROOT_DIR, 'cnn_model_keras2.h5'),
-    db_path=os.path.join(ROOT_DIR, 'gesture_db.db'),
-    hist_path=os.path.join(ROOT_DIR, 'hist')
-)
+
+# TensorFlow predictor (legacy) - Removed as requested
+# predictor = SignPredictor(...)
+
+# YOLO predictor (new)
+yolo_predictor = YoloSignPredictor()
+
 transcriber = AudioTranscriber()
 
 @app.get("/")
@@ -38,6 +40,12 @@ async def root():
 
 @app.post("/predict-sign")
 async def predict_sign(file: UploadFile = File(...)):
+    """Legacy endpoint redirected to YOLO."""
+    return await predict_sign_yolo(file)
+
+@app.post("/predict-sign-yolo")
+async def predict_sign_yolo(file: UploadFile = File(...)):
+    """YOLO-based sign detection - faster and more accurate."""
     try:
         contents = await file.read()
         nparr = np.frombuffer(contents, np.uint8)
@@ -46,8 +54,8 @@ async def predict_sign(file: UploadFile = File(...)):
         if img is None:
             raise HTTPException(status_code=400, detail="Invalid image")
             
-        text, confidence = predictor.predict(img)
-        return {"text": text, "confidence": confidence}
+        text, confidence, debug_info = yolo_predictor.predict(img)
+        return {"text": text, "confidence": confidence, "debug": debug_info}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -77,4 +85,4 @@ async def transcribe_audio(file: UploadFile = File(...)):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8003)

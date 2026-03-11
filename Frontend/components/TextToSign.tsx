@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function TextToSign() {
   const [inputText, setInputText] = useState('');
   const [isConverting, setIsConverting] = useState(false);
-  const [signDescription, setSignDescription] = useState('');
+  const [signs, setSigns] = useState<string[]>([]);
 
   const handleConvert = async () => {
     if (!inputText.trim()) {
@@ -14,34 +14,13 @@ export default function TextToSign() {
     }
 
     setIsConverting(true);
-    try {
-      // Simulate text to sign language conversion
-      // In production, you'd use a sign language database or ML model
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Convert text to sequence of characters that we have signs for
+    const charSequence = inputText.toUpperCase().split('').filter(char =>
+      (char >= 'A' && char <= 'Z') || char === ' '
+    ).map(char => char === ' ' ? 'space' : char);
 
-      const signDescriptions: { [key: string]: string } = {
-        hello: 'Open hand touching forehead, moving forward',
-        thank: 'Hand near chin, moving outward twice',
-        good: 'Hand moves from mouth downward to other hand palm up',
-        morning: 'One arm represents the sun, other arm moves up as if sun is rising',
-        help: 'One hand formed like a fist under the other palm in a lifting motion',
-        please: 'Hand on chest making circular motions',
-        sorry: 'Hand making a fist, moving in circles over the heart',
-        love: 'Both hands crossed over heart',
-        water: 'W-shaped hand, finger move down from forehead',
-        food: 'Curved hand fingers to mouth repeatedly',
-      };
-
-      let description =
-        signDescriptions[inputText.toLowerCase()] ||
-        `Sign for "${inputText}": Finger-spell each letter in American Sign Language (ASL) alphabet, or use context-specific hand gestures.`;
-
-      setSignDescription(description);
-    } catch (error) {
-      console.error('Error converting text:', error);
-    } finally {
-      setIsConverting(false);
-    }
+    setSigns(charSequence);
+    setIsConverting(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -74,23 +53,31 @@ export default function TextToSign() {
         {isConverting ? 'Converting...' : 'Convert to Sign Language'}
       </button>
 
-      {signDescription && (
+      {signs.length > 0 && (
         <div className="bg-secondary/50 rounded-lg p-6 space-y-4">
           <div>
-            <p className="text-sm text-muted-foreground mb-2">Your Text:</p>
-            <p className="text-xl font-semibold text-accent">{inputText}</p>
-          </div>
-
-          <div className="border-t border-border pt-4">
-            <p className="text-sm text-muted-foreground mb-2">Sign Language Guide:</p>
-            <p className="text-base leading-relaxed">{signDescription}</p>
-          </div>
-
-          <div className="bg-secondary/30 rounded p-3 text-sm text-muted-foreground italic">
-            💡 Tip: Use a mirror or video to practice the sign movements shown above.
+            <p className="text-sm text-muted-foreground mb-4">Sign Language Sequence:</p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              {signs.map((sign, index) => (
+                <div key={index} className="flex flex-col items-center gap-2">
+                  <div className="w-24 h-24 bg-card rounded-lg border border-border overflow-hidden">
+                    <img
+                      src={`/signs/${sign}.jpg`}
+                      alt={sign}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'https://placehold.co/100x100/222/accent?text=' + sign;
+                      }}
+                    />
+                  </div>
+                  <span className="text-lg font-bold text-accent">{sign === 'space' ? '␣' : sign}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
     </div>
   );
+
 }

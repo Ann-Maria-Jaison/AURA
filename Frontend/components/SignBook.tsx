@@ -4,12 +4,12 @@ import { useState } from 'react';
 
 export default function SignBook() {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-    const numbers = '0123456789'.split('');
-    const [filter, setFilter] = useState<'all' | 'letters' | 'numbers'>('all');
+    const special = ['del', 'space'];
+    const [filter, setFilter] = useState<'all' | 'letters' | 'special'>('all');
 
     const items = [
         ...(filter === 'all' || filter === 'letters' ? letters.map(l => ({ id: l, type: 'letter' })) : []),
-        ...(filter === 'all' || filter === 'numbers' ? numbers.map(n => ({ id: n, type: 'number' })) : []),
+        ...(filter === 'all' || filter === 'special' ? special.map(s => ({ id: s, type: 'special' })) : []),
     ];
 
     return (
@@ -33,10 +33,10 @@ export default function SignBook() {
                         Letters
                     </button>
                     <button
-                        onClick={() => setFilter('numbers')}
-                        className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${filter === 'numbers' ? 'bg-card shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
+                        onClick={() => setFilter('special')}
+                        className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${filter === 'special' ? 'bg-card shadow-sm text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
                     >
-                        Numbers
+                        Special
                     </button>
                 </div>
             </div>
@@ -46,7 +46,7 @@ export default function SignBook() {
                     <div key={item.id} className="group bg-card rounded-xl border border-border overflow-hidden hover:border-accent hover:shadow-xl hover:shadow-accent/5 transition-all duration-300">
                         <div className="aspect-square bg-secondary/50 flex items-center justify-center overflow-hidden">
                             <img
-                                src={`/signbook/${item.id}.jpg`}
+                                src={`/signs/${item.id}.jpg`}
                                 alt={`Sign for ${item.id}`}
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 onError={(e) => {
@@ -64,8 +64,9 @@ export default function SignBook() {
                 ))}
             </div>
 
+
             <div className="bg-accent/5 border border-accent/20 rounded-xl p-6 flex gap-4 items-center">
-                <div className="text-3xl">📚</div>
+                
                 <div>
                     <h3 className="font-bold text-accent-foreground">Learning Tip</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">

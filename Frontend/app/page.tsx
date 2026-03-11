@@ -11,11 +11,11 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'sign-to-text' | 'text-to-sign' | 'audio-to-sign' | 'sign-book' | 'settings'>('sign-to-text');
 
   const tabs = [
-    { id: 'sign-to-text', label: 'Sign → Text', icon: '🖐️' },
-    { id: 'text-to-sign', label: 'Text → Sign', icon: '⌨️' },
-    { id: 'audio-to-sign', label: 'Audio → Sign', icon: '🎤' },
-    { id: 'sign-book', label: 'Sign Book', icon: '📖' },
-    { id: 'settings', label: 'Settings', icon: '⚙️' },
+    { id: 'sign-to-text', label: 'Sign → Text', icon: ' ' },
+    { id: 'text-to-sign', label: 'Text → Sign', icon: ' ' },
+    { id: 'audio-to-sign', label: 'Audio → Sign', icon: ' ' },
+    { id: 'sign-book', label: 'Sign Book', icon: ' ' },
+    { id: 'settings', label: 'Settings', icon: ' ' },  
   ];
 
   return (
@@ -23,7 +23,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-2 text-balance">Sign Language Translator</h1>
+          <h1 className="text-4xl font-bold mb-2 text-balance">AURA</h1>
           <p className="text-muted-foreground text-balance">Bridge communication with sign language and text conversion</p>
         </div>
 
