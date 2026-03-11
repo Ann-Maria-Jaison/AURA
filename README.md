@@ -237,6 +237,7 @@ sequenceDiagram
 - Documentation
 - Presentation
 - Backend Development: Audio-to-Text Module
+---
 
 ## Vision
 
