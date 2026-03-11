@@ -7,3 +7,18 @@ Frontend/node_modules
 Backend/node_modules
 Backend/.env
 Frontend/.env
+# python
+__pycache__/
+*.pyc
+
+# environments
+.env
+venv/
+
+# ML outputs
+runs/
+*.h5
+*.pt
+
+# system
+.DS_Store
