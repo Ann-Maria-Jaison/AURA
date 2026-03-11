@@ -215,14 +215,6 @@ sequenceDiagram
 
 ---
 
-## Documentation
-
-Full technical architecture, API endpoints, and model training details can be found in:
-
-📄 [TECHNICAL_REPORT.md](./TECHNICAL_REPORT.md)
-
----
-
 ## Vision
 
 AURA aims to make communication **inclusive**, **accessible**, and **intelligent** by bridging the gap between **spoken language and sign language** using cutting-edge AI.
@@ -230,6 +222,15 @@ AURA aims to make communication **inclusive**, **accessible**, and **intelligent
 We envision a world where no one is left out of a conversation because of a language barrier—whether spoken or signed.
 
 ---
+
+## 👥 Team
+
+| Name | Contributions |
+|------|---------------|
+| **Ann Maria Jaison** | Frontend, Backend: Sign-to-Text and Text-to-Sign Module, Audio-to-Text Module, Machine learning, Documentation |
+| **Ashlin Joy Varghese** | Research, Documentation, Presentation, Backend Development: Audio-to-Text Module |
+| **Catherine Susan Rajesh** | Documentation, Presentation, Research, Backend Development: Sign-to-Text and Text-to-Sign Module |
+| **Neha Joshy** | Presentation, Research, Documentation, Backend Development: Audio-to-Text Module |
 
 <p align="center">
   Made with ❤️ by the AURA Team
