@@ -22,7 +22,7 @@
   - [Prerequisites](#prerequisites)
   - [Backend Setup](#backend-setup)
   - [Frontend Setup](#frontend-setup)
-- [Team](#team)
+- [Team](#👥-Team)
 - [Vision](#vision)
 ---
 
