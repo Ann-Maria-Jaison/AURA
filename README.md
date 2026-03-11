@@ -225,12 +225,30 @@ We envision a world where no one is left out of a conversation because of a lang
 
 ## 👥 Team
 
-| Name | Contributions |
-|------|---------------|
-| **Ann Maria Jaison** | Frontend, Backend: Sign-to-Text and Text-to-Sign Module, Audio-to-Text Module, Machine learning, Documentation |
-| **Ashlin Joy Varghese** | Research, Documentation, Presentation, Backend Development: Audio-to-Text Module |
-| **Catherine Susan Rajesh** | Documentation, Presentation, Research, Backend Development: Sign-to-Text and Text-to-Sign Module |
-| **Neha Joshy** | Presentation, Research, Documentation, Backend Development: Audio-to-Text Module |
+### Ann Maria Jaison
+- Frontend
+- Backend: Sign-to-Text and Text-to-Sign Module
+- Machine learning
+- Audio-to-Text Module
+- Documentation
+
+### Ashlin Joy Varghese
+- Backend Development: Audio-to-Text Module
+- Research
+- Documentation
+- Presentation
+
+### Catherine Susan Rajesh
+- Backend Development: Sign-to-Text and Text-to-Sign Module
+- Documentation
+- Presentation
+- Research
+
+### Neha Joshy
+- Research
+- Documentation
+- Backend Development: Audio-to-Text Module
+- Presentation
 
 <p align="center">
   Made with ❤️ by the AURA Team
