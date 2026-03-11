@@ -221,7 +221,7 @@ We envision a world where no one is left out of a conversation because of a lang
 
 ---
 
-## 👥 Team
+##  Team
 
 ### Ann Maria Jaison
 - Frontend
