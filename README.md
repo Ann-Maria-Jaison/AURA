@@ -25,7 +25,7 @@
   - [Frontend Setup](#frontend-setup)
 - [Team](#team)
 - [Vision](#vision)
-
+  
 ---
 
 ## The Problem
